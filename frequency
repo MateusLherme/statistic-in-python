@@ -1,0 +1,68 @@
+#Uma industria inspecionou 30 aparelhos fabricados por certa maquina, obtendo os seguintes numeros de defeitos por aparelho. 
+#Elabore uma distribuicao de frequencia e calcule as frequencias acumuladas e relativas.
+
+from collections import Counter
+
+amostra = [1,0,2,0,1,1,4,0,2,3,2,2,1,0,0,0,2,1,1,0,0,4,2,1,0,0,0,0,1,2]
+
+#ROL
+sorted(amostra)
+
+tamanho_amostra = len(amostra)
+unicos = len(set(amostra))
+
+valores1 = list(Counter(amostra).keys())
+valores2 = list(Counter(amostra).values())
+
+#frequencia acumulada
+acumulada = sum(valores2)
+print(f"Frequencia acumulada: {acumulada}\n")
+
+#frequencia relativa
+for i in range(unicos):
+  print(f"Frequencia relativa do numero: {i}\n")
+  dividindo = (valores2[i] / tamanho_amostra) * 100
+  print(f"{round(dividindo, 2)}%\n")
+
+#Distribuicao Frequencia
+try:
+  print("\nDistribuicao de Frequencia")
+  while True:
+    print(f"Numero {valores1[0]}------Aparece {valores2[0]} vezes")
+    valores1.pop(0)
+    valores2.pop(0)
+except IndexError:
+  print("Fim")
+  
+  
+Output:
+Frequencia acumulada: 30
+
+Frequencia relativa do numero: 0
+
+26.67%
+
+Frequencia relativa do numero: 1
+
+40.0%
+
+Frequencia relativa do numero: 2
+
+23.33%
+
+Frequencia relativa do numero: 3
+
+6.67%
+
+Frequencia relativa do numero: 4
+
+3.33%
+
+
+Distribuicao de Frequencia
+Numero 1------Aparece 8 vezes
+Numero 0------Aparece 12 vezes
+Numero 2------Aparece 7 vezes
+Numero 4------Aparece 2 vezes
+Numero 3------Aparece 1 vezes
+Fim
